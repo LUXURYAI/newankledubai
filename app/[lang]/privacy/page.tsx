@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/Reveal";
 import { getLang } from "@/lib/i18n";
 
-const data = ["Legal", "Privacy Policy", [["Information We Collect", "Contact details, appointment requests, submitted medical information, website usage data, and communications."], ["How Information May Be Used", "To respond to inquiries, coordinate appointments, support patient communication, and meet legal obligations."], ["Final Review", "This draft must be reviewed by UAE legal and healthcare compliance professionals before launch."]]];
+const data: [string, string, [string, string][]] = ["Legal", "Privacy Policy", [["Information We Collect", "Contact details, appointment requests, submitted medical information, website usage data, and communications."], ["How Information May Be Used", "To respond to inquiries, coordinate appointments, support patient communication, and meet legal obligations."], ["Final Review", "This draft must be reviewed by UAE legal and healthcare compliance professionals before launch."]]];
 
 export default async function Page({params}:{params:Promise<{lang:string}>}){
  const {lang:raw}=await params; getLang(raw);

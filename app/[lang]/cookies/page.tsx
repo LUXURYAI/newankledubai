@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/Reveal";
 import { getLang } from "@/lib/i18n";
 
-const data = ["Legal", "Cookies Policy", [["Cookie Use", "Cookies may be used for essential functionality, preferences, analytics, and marketing if enabled."], ["Consent", "A compliant consent banner should be configured before analytics or marketing cookies are activated."]]];
+const data: [string, string, [string, string][]] = ["Legal", "Cookies Policy", [["Cookie Use", "Cookies may be used for essential functionality, preferences, analytics, and marketing if enabled."], ["Consent", "A compliant consent banner should be configured before analytics or marketing cookies are activated."]]];
 
 export default async function Page({params}:{params:Promise<{lang:string}>}){
  const {lang:raw}=await params; getLang(raw);

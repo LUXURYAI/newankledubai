@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/Reveal";
 import { getLang } from "@/lib/i18n";
 
-const data = ["Important Information", "Medical Disclaimer", [["Not Emergency Care", "Severe infection, black tissue, fever, spreading redness, severe pain, or a rapidly worsening wound requires urgent medical care."], ["General Information Only", "Website content is educational and does not constitute individual diagnosis or treatment advice."], ["Verification", "Medical titles, licenses, hospital privileges, services, and availability must be verified before public launch."], ["Outcomes", "No medical or surgical outcome can be guaranteed."]]];
+const data: [string, string, [string, string][]] = ["Important Information", "Medical Disclaimer", [["Not Emergency Care", "Severe infection, black tissue, fever, spreading redness, severe pain, or a rapidly worsening wound requires urgent medical care."], ["General Information Only", "Website content is educational and does not constitute individual diagnosis or treatment advice."], ["Verification", "Medical titles, licenses, hospital privileges, services, and availability must be verified before public launch."], ["Outcomes", "No medical or surgical outcome can be guaranteed."]]];
 
 export default async function Page({params}:{params:Promise<{lang:string}>}){
  const {lang:raw}=await params; getLang(raw);

@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/Reveal";
 import { getLang } from "@/lib/i18n";
 
-const data = ["About New Ankle Dubai", "A Center of Excellence for Complex Foot & Ankle Care", [["Our Mission", "Preserving mobility, protecting limbs, and restoring quality of life through advanced specialist care."], ["Our Model", "International surgical expertise, careful clinical judgment, multidisciplinary coordination, and premium private-care experience."], ["Who We Serve", "Patients with diabetic foot complications, non-healing wounds, infection, ischemia, deformity, trauma, failed surgery, or complex reconstruction needs."]]];
+const data: [string, string, [string, string][]] = ["About New Ankle Dubai", "A Center of Excellence for Complex Foot & Ankle Care", [["Our Mission", "Preserving mobility, protecting limbs, and restoring quality of life through advanced specialist care."], ["Our Model", "International surgical expertise, careful clinical judgment, multidisciplinary coordination, and premium private-care experience."], ["Who We Serve", "Patients with diabetic foot complications, non-healing wounds, infection, ischemia, deformity, trauma, failed surgery, or complex reconstruction needs."]]];
 
 export default async function Page({params}:{params:Promise<{lang:string}>}){
  const {lang:raw}=await params; getLang(raw);

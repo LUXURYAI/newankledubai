@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/Reveal";
 import { getLang } from "@/lib/i18n";
 
-const data = ["Legal", "Terms & Conditions", [["Website Use", "The website provides general information and does not replace diagnosis, examination, or emergency care."], ["No Guarantee", "Submitting a form does not guarantee an appointment, treatment, surgery, or outcome."], ["Final Review", "This draft must be reviewed under UAE law before launch."]]];
+const data: [string, string, [string, string][]] = ["Legal", "Terms & Conditions", [["Website Use", "The website provides general information and does not replace diagnosis, examination, or emergency care."], ["No Guarantee", "Submitting a form does not guarantee an appointment, treatment, surgery, or outcome."], ["Final Review", "This draft must be reviewed under UAE law before launch."]]];
 
 export default async function Page({params}:{params:Promise<{lang:string}>}){
  const {lang:raw}=await params; getLang(raw);

@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/Reveal";
 import { getLang } from "@/lib/i18n";
 
-const data = ["Insights", "Knowledge for Better Decisions", [["When a Diabetic Foot Wound Becomes Urgent", "Warning signs that require prompt specialist assessment."], ["Can a Limb Be Saved After Severe Infection?", "Factors that influence the treatment plan and why timing matters."], ["When to Seek Another Surgical Opinion", "Important questions before complex reconstruction or amputation."], ["Why Blood Flow Matters in Wound Healing", "How reduced circulation changes wound and surgical strategy."], ["Early Signs of Charcot Foot", "Why warmth, swelling, and shape change should not be ignored."]]];
+const data: [string, string, [string, string][]] = ["Insights", "Knowledge for Better Decisions", [["When a Diabetic Foot Wound Becomes Urgent", "Warning signs that require prompt specialist assessment."], ["Can a Limb Be Saved After Severe Infection?", "Factors that influence the treatment plan and why timing matters."], ["When to Seek Another Surgical Opinion", "Important questions before complex reconstruction or amputation."], ["Why Blood Flow Matters in Wound Healing", "How reduced circulation changes wound and surgical strategy."], ["Early Signs of Charcot Foot", "Why warmth, swelling, and shape change should not be ignored."]]];
 
 export default async function Page({params}:{params:Promise<{lang:string}>}){
  const {lang:raw}=await params; getLang(raw);
