@@ -1,0 +1,4 @@
+Build command: pnpm run build
+Build output directory: out
+Root directory: leave empty
+Recommended environment variable: NODE_VERSION=22

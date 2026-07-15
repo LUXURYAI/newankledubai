@@ -1,0 +1,24 @@
+NEW ANKLE DUBAI — FINAL V4
+
+Что исправлено:
+1. Заменена фотография Medical Director на чистый оригинал без интерфейса телефона.
+2. Полностью локализованы EN / RU / AR версии главной страницы, Medical Director, About, Centers, Conditions, Procedures, International Patients, Contact, Book, FAQ, Insights и юридические страницы.
+3. Локализованы все 27 страниц заболеваний и 12 страниц операций.
+4. Исправлены смешанные языки в карточках, CTA, футере, пути пациента и боковых блоках.
+5. Улучшено кадрирование портрета на компьютере и телефоне.
+6. Проверена RTL-верстка арабской версии.
+7. Производственная сборка проверена: 168 статических страниц созданы без ошибок.
+
+Cloudflare Pages:
+Build command: pnpm install --frozen-lockfile && pnpm run build
+Build output directory: out
+Root directory: пусто
+NODE_VERSION: 24.15.0
+Удалить переменную SKIP_DEPENDENCY_INSTALL, если она существует.
+
+Установка:
+1. Сделайте резервную копию текущей папки проекта.
+2. Скопируйте содержимое папки newankledubai из этого архива в существующий GitHub-репозиторий, сохранив его скрытую папку .git.
+3. В терминале выполните: pnpm install
+4. Затем: pnpm run build
+5. В GitHub Desktop: Commit to main, затем Push origin.
