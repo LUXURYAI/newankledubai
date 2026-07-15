@@ -1,6 +1,0 @@
-Verified production build
-Next.js 15.4.4
-168 static pages generated
-Static export created successfully in /out
-Type checking passed
-Build date: 2026-07-15

@@ -1,5 +1,9 @@
 export default function Logo({compact=false}:{compact?:boolean}){
-  return <span className={`logo-mark ${compact?'compact':''}`} aria-hidden="true">
-    <svg viewBox="0 0 64 64" role="img"><circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" strokeWidth="1.8"/><path d="M29 10c-.5 9-1.2 17-2.8 24.5-1.3 6-5 9.2-10.2 11.2M35 10c.4 10 .9 20 2.6 27.6 1.2 5.2 4.5 8.2 10.4 9.7M27.5 34c3.2 2.6 6.8 4 10.7 4.1M20 48c8.5 2.3 17 2.4 25.5.2M31.5 15v17" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+  return <span className={compact?'logo-symbol compact':'logo-symbol'} aria-hidden="true">
+    <svg viewBox="0 0 96 96" role="img">
+      <circle cx="48" cy="48" r="43" fill="none" stroke="currentColor" strokeWidth="2"/>
+      <path d="M42 17c1 14 2 25-1 37-2 9-8 15-15 20M55 17c-1 16-1 27 3 39 3 9 8 14 14 18M42 54c4 2 8 3 13 2M26 74c11-1 20 1 29 6M72 74c-8 0-13 2-18 6M35 61c-5 1-10 5-13 10M61 61c5 1 10 5 13 10M46 25v24M51 25v24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M36 76c4-8 8-12 13-13 5 1 9 5 13 13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
   </span>
 }
