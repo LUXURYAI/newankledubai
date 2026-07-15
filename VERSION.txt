@@ -1,4 +1,2 @@
-New Ankle Dubai V5 Complete Verified
-Build target: Cloudflare Pages static export
-Languages: English, Russian, Arabic
-Doctor image: clean 1040x1536 portrait
+New Ankle Dubai — Final Professional Release V6.0
+Responsive logo, corrected typography, mobile navigation, animations and illustrative surgery gallery.

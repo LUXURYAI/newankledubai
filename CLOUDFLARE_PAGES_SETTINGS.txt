@@ -1,4 +1,17 @@
-Build command: pnpm run build
-Build output directory: out
-Root directory: leave empty
-Recommended environment variable: NODE_VERSION=22
+CLOUDFLARE PAGES — FINAL SETTINGS
+
+Build command:
+pnpm install --frozen-lockfile && pnpm run build
+
+Build output directory:
+out
+
+Root directory:
+leave empty
+
+Environment variables:
+NODE_VERSION=24.15.0
+PNPM_VERSION=10.33.4
+
+IMPORTANT:
+Delete SKIP_DEPENDENCY_INSTALL if it exists.
