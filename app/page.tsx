@@ -1,2 +1,0 @@
-import Link from "next/link";
-export default function LanguageGate(){return <main className="language-gate"><div className="gate-card"><div className="brand-mark">NAD</div><p className="eyebrow">NEW ANKLE DUBAI</p><h1>Advanced Foot & Ankle Care</h1><p>Select your language</p><div className="language-buttons"><Link href="/en/">English</Link><Link href="/ru/">Русский</Link><Link href="/ar/">العربية</Link></div></div></main>}
