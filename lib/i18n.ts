@@ -1,5 +1,4 @@
-import { content, type Lang } from "./content";
-export const supportedLangs: Lang[] = ["en","ru","ar"];
-export function getLang(value:string):Lang { return supportedLangs.includes(value as Lang) ? value as Lang : "en"; }
-export function getContent(lang:Lang){ return content[lang]; }
-export function isRtl(lang:Lang){ return lang==="ar"; }
+export const languages = ["en", "ru", "ar"] as const;
+export type Lang = typeof languages[number];
+export function isLang(v: string): v is Lang { return languages.includes(v as Lang); }
+export function dir(lang: Lang){ return lang === "ar" ? "rtl" : "ltr"; }

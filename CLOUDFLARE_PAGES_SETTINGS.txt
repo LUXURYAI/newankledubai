@@ -1,26 +1,4 @@
-NEW ANKLE DUBAI — CLOUDFLARE PAGES SETTINGS
-
-Production branch:
-main
-
-Framework preset:
-Next.js (Static HTML Export)
-
-Build command:
-npm run build
-
-Build output directory:
-out
-
-Root directory:
-/
-
-Node.js version:
-20
-
-Environment variables:
-NODE_VERSION = 20
-
-Custom domains after successful deployment:
-newankledubai.com
-www.newankledubai.com
+Build command: pnpm run build
+Build output directory: out
+Root directory: leave empty
+Recommended environment variable: NODE_VERSION=22

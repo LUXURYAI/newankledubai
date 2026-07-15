@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "New Ankle Dubai", template: "%s | New Ankle Dubai" },
-  description: "Advanced diabetic foot, limb salvage, reconstruction, and foot-ankle surgery in Dubai.",
   metadataBase: new URL("https://newankledubai.com"),
-  openGraph: { title: "New Ankle Dubai", description: "World-class foot and ankle surgical expertise is coming soon to Dubai.", url: "https://newankledubai.com", siteName: "New Ankle Dubai", type: "website" },
+  title: { default: "New Ankle Dubai | Advanced Foot & Ankle Center", template: "%s | New Ankle Dubai" },
+  description: "Advanced foot and ankle surgery, total ankle replacement, diabetic foot care, limb salvage, trauma and reconstruction in Dubai.",
+  openGraph: { title: "New Ankle Dubai", description: "World-class foot and ankle care in Dubai.", type: "website", url: "https://newankledubai.com" },
+  robots: { index: true, follow: true }
 };
 
-export default function RootLayout({children}:{children:React.ReactNode}) {
-  return <html><body>{children}</body></html>;
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return <html lang="en"><body>{children}</body></html>;
 }

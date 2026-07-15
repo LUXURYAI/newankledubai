@@ -1,48 +1,9 @@
-import Link from "next/link";
-import { Reveal } from "@/components/Reveal";
-import { getContent, getLang } from "@/lib/i18n";
-
-export default async function Home({params}:{params:Promise<{lang:string}>}){
- const {lang:raw}=await params; const lang=getLang(raw); const t=getContent(lang);
- return <>
-  <section className="hero">
-    <div className="heroGlow one"/><div className="heroGlow two"/>
-    <Reveal className="heroContent">
-      <p className="eyebrow">{t.coming}</p>
-      <h1>{t.heroTitle}</h1>
-      <p className="lead">{t.heroSubtitle}</p>
-      <p className="prestige">{t.prestige}</p>
-      <div className="heroBtns"><Link className="btn gold" href={`/${lang}/contact/`}>{t.nav.book}</Link><Link className="btn outline" href={`/${lang}/medical-director/`}>{t.nav.director}</Link></div>
-      <div className="trust"><span>Diabetic Foot</span><span>Limb Salvage</span><span>Reconstruction</span><span>EN / AR / RU</span></div>
-    </Reveal>
-    <div className="portraitHero"><div><span>AH</span><small>Official portrait</small></div></div>
-  </section>
-
-  <section className="section split">
-   <Reveal><p className="eyebrow">New Ankle Dubai</p><h2>{t.aboutTitle}</h2></Reveal>
-   <Reveal><p className="bodyText">{t.aboutText}</p><Link className="textLink" href={`/${lang}/about/`}>Explore the Center →</Link></Reveal>
-  </section>
-
-  <section className="section dark">
-    <Reveal><p className="eyebrow">Medical Leadership</p><h2>Dr. Armen Hagopjanian</h2><h3 className="goldText">{t.directorTitle}</h3><p className="bodyText light">{t.directorText}</p><Link className="btn gold" href={`/${lang}/medical-director/`}>View Full Profile</Link></Reveal>
-  </section>
-
-  <section className="section">
-   <Reveal><p className="eyebrow">Centers of Excellence</p><h2>Focused Expertise. Coordinated Care.</h2></Reveal>
-   <div className="cards">
-    {[
-      ["01","Diabetic Foot Center","Specialist pathways for ulcers, infection, tissue loss, and non-healing wounds."],
-      ["02","Limb Salvage Center","Coordinated assessment for ischemia, infection, and threatened limb viability."],
-      ["03","Reconstruction Center","Complex reconstruction after trauma, infection, deformity, or previous surgery."],
-      ["04","Advanced Foot & Ankle Surgery","Specialist surgical care for complex foot and ankle conditions."],
-      ["05","Second Opinion","Expert review before major decisions such as complex reconstruction or amputation."],
-      ["06","International Patients","Structured support before travel, during treatment, and after returning home."]
-    ].map(([n,h,p])=><Reveal className="card" key={n}><span>{n}</span><h3>{h}</h3><p>{p}</p></Reveal>)}
-   </div>
-  </section>
-
-  <section className="quote"><Reveal><blockquote>“Successful treatment begins with careful diagnosis, thoughtful planning, and specialist expertise.”</blockquote><p>— Dr. Armen Hagopjanian</p></Reveal></section>
-
-  <section className="cta"><Reveal><h2>{t.prestige}</h2><Link className="btn darkBtn" href={`/${lang}/contact/`}>{t.nav.book}</Link></Reveal></section>
- </>;
-}
+import Link from 'next/link'; import PageShell from '@/components/PageShell'; import CTA from '@/components/CTA'; import {isLang} from '@/lib/i18n'; import {centers,copy,t} from '@/lib/site-data';
+export default async function Home({params}:{params:Promise<{lang:string}>}){const {lang:raw}=await params;if(!isLang(raw)) return null;const lang=raw;const c=copy[lang];return <PageShell lang={lang}><main>
+<section className="hero"><div className="hero-orb one"/><div className="hero-orb two"/><div className="container hero-grid"><div><span className="eyebrow">{c.heroEyebrow}</span><h1>{c.heroTitle}</h1><p className="lead">{c.heroText}</p><div className="hero-actions"><Link className="btn" href={`/${lang}/book/`}>{c.book}</Link><Link className="btn ghost" href={`/${lang}/centers/`}>{lang==='ru'?'Наши направления':lang==='ar'?'مراكزنا':'Explore Our Centers'}</Link></div><div className="trust-row"><span>Board-Certified Expertise</span><span>Complex Reconstruction</span><span>International Care</span></div></div><div className="hero-panel"><div className="hero-stat"><b>6</b><span>{lang==='ru'?'центров экспертизы':lang==='ar'?'مراكز تميز':'centers of excellence'}</span></div><div className="hero-stat"><b>25+</b><span>{lang==='ru'?'направлений лечения':lang==='ar'?'حالة وعلاج':'conditions & treatments'}</span></div><div className="hero-stat"><b>3</b><span>{lang==='ru'?'языка сайта':lang==='ar'?'لغات الموقع':'website languages'}</span></div></div></div></section>
+<section className="urgent"><div className="container urgent-inner"><div><b>{c.urgent}</b><span>{c.urgentText}</span></div><Link href={`/${lang}/book/`}>{c.book} →</Link></div></section>
+<section className="section"><div className="container"><div className="section-heading"><span className="eyebrow">CENTERS OF EXCELLENCE</span><h2>{lang==='ru'?'Специализированная помощь для сложных случаев':lang==='ar'?'رعاية متخصصة للحالات المعقدة':'Specialized Care for Complex Cases'}</h2><p>{lang==='ru'?'Все ключевые направления объединены вокруг одной цели: сохранить функцию, уменьшить боль и вернуть пациента к активной жизни.':lang==='ar'?'تجتمع جميع التخصصات حول هدف واحد: الحفاظ على الوظيفة وتقليل الألم وإعادة المريض إلى حياة نشطة.':'Every specialty is organized around one goal: preserve function, reduce pain and return patients to active life.'}</p></div><div className="card-grid">{centers.map(x=><article className="service-card" key={x.slug}><span className="service-icon">{x.icon}</span><h3>{t(x.title,lang)}</h3><p>{t(x.text,lang)}</p><Link href={`/${lang}/centers/#${x.slug}`}>{c.learn} →</Link></article>)}</div></div></section>
+<section className="section dark-section"><div className="container director-grid"><div className="director-image"><img src="/images/dr-armen-hagopjanian.jpg" alt="Dr. Armen Hagopjanian"/></div><div><span className="eyebrow">{c.director}</span><h2>Armen Hagopjanian, DPM, FACFAS</h2><p className="lead">{lang==='ru'?'Хирург стопы и голеностопа, специалист по реконструкции, эндопротезированию, травме, диабетической стопе и сохранению конечности.':lang==='ar'?'جراح قدم وكاحل متخصص في إعادة البناء واستبدال المفصل والإصابات والقدم السكري وإنقاذ الأطراف.':'Foot and ankle surgeon specializing in reconstruction, total ankle replacement, trauma, diabetic foot care and limb salvage.'}</p><div className="achievement-grid"><span>Pioneer of Total Ankle Replacement in Los Angeles</span><span>Board Certified in Foot Surgery</span><span>Board Certified in Reconstructive Rearfoot & Ankle Surgery</span><span>International Surgical Educator</span></div><Link className="text-link" href={`/${lang}/medical-director/`}>{c.learn} →</Link></div></div></section>
+<section className="section"><div className="container"><div className="section-heading"><span className="eyebrow">{c.why}</span><h2>{lang==='ru'?'Экспертная медицина без компромиссов':lang==='ar'?'طب تخصصي بلا تنازلات':'Specialist Medicine Without Compromise'}</h2></div><div className="feature-grid"><article><b>01</b><h3>International Expertise</h3><p>Advanced surgical leadership and evidence-based pathways.</p></article><article><b>02</b><h3>One Specialized Team</h3><p>Focused care for the complete foot and ankle journey.</p></article><article><b>03</b><h3>Complex Case Review</h3><p>Structured evaluation for revision, deformity and limb-threatening disease.</p></article><article><b>04</b><h3>Global Patient Support</h3><p>Remote records review, travel planning and coordinated follow-up.</p></article></div></div></section>
+<section className="section journey"><div className="container"><div className="section-heading"><span className="eyebrow">{c.path}</span><h2>{lang==='ru'?'От первого запроса до восстановления':lang==='ar'?'من الطلب الأول حتى التعافي':'From First Request to Recovery'}</h2></div><div className="journey-steps">{['Request consultation','Medical records review','Online specialist consultation','Personalized treatment plan','Travel to Dubai','Procedure & recovery','Remote follow-up'].map((s,i)=><div key={s}><span>{String(i+1).padStart(2,'0')}</span><p>{s}</p></div>)}</div></div></section>
+<CTA lang={lang}/></main></PageShell>}

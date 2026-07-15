@@ -1,12 +1,2 @@
-import { Reveal } from "@/components/Reveal";
-import { getLang } from "@/lib/i18n";
-
-const data: [string, string, [string, string][]] = ["International Patients", "Advanced Specialist Care in Dubai", [["Remote Case Preparation", "Submit medical reports, imaging, laboratory results, medication lists, operative notes, and relevant photographs."], ["Treatment Coordination", "Planning of consultations, investigations, admission, surgery, and expected length of stay where applicable."], ["Follow-Up Planning", "Clear discharge instructions and coordination after the patient returns home."], ["Second Opinion", "Specialist review for proposed amputation, complex reconstruction, non-healing wounds, or failed prior surgery."]]];
-
-export default async function Page({params}:{params:Promise<{lang:string}>}){
- const {lang:raw}=await params; getLang(raw);
- return <>
-  <section className="pageHero"><Reveal><p className="eyebrow">{data[0]}</p><h1>{data[1]}</h1></Reveal></section>
-  <section className="section"><div className="cards">{data[2].map(([h,p]:[string,string])=><Reveal className="card" key={h}><h3>{h}</h3><p>{p}</p></Reveal>)}</div></section>
- </>;
-}
+import PageShell from '@/components/PageShell'; import CTA from '@/components/CTA'; import {isLang} from '@/lib/i18n';
+export default async function Page({params}:{params:Promise<{lang:string}>}){const {lang:raw}=await params;if(!isLang(raw))return null;const lang=raw;return <PageShell lang={lang}><main><section className="page-hero"><div className="container narrow"><span className="eyebrow">INTERNATIONAL PATIENTS</span><h1>Expert Foot & Ankle Care in Dubai, Coordinated From Anywhere</h1><p className="lead">A clear pathway from remote records review to treatment, recovery and follow-up.</p></div></section><section className="section"><div className="container journey-steps large">{['Send medical records','Specialist case review','Video consultation','Treatment and cost plan','Travel coordination','Treatment in Dubai','Post-treatment follow-up'].map((x,i)=><div key={x}><span>{String(i+1).padStart(2,'0')}</span><p>{x}</p></div>)}</div></section><section className="section soft"><div className="container two-col"><div><h2>International patient support</h2></div><div className="prose"><ul><li>Remote review of MRI, CT, X-ray and reports</li><li>Consultation scheduling and treatment planning</li><li>Estimated timeline and recovery requirements</li><li>Support with travel, accommodation and local transport</li><li>Interpreter coordination where available</li><li>Remote post-operative follow-up</li></ul></div></div></section><CTA lang={lang}/></main></PageShell>}

@@ -1,12 +1,2 @@
-import { Reveal } from "@/components/Reveal";
-import { getLang } from "@/lib/i18n";
-
-const data: [string, string, [string, string][]] = ["Contact & Priority Access", "Join the Dubai Appointment Priority List", [["Phone", "To be confirmed"], ["WhatsApp", "To be confirmed"], ["Email", "To be confirmed"], ["Dubai Location", "Facility and operating hospital details will be announced after formal confirmation."]]];
-
-export default async function Page({params}:{params:Promise<{lang:string}>}){
- const {lang:raw}=await params; getLang(raw);
- return <>
-  <section className="pageHero"><Reveal><p className="eyebrow">{data[0]}</p><h1>{data[1]}</h1></Reveal></section>
-  <section className="section"><div className="cards">{data[2].map(([h,p]:[string,string])=><Reveal className="card" key={h}><h3>{h}</h3><p>{p}</p></Reveal>)}</div></section>
- </>;
-}
+import PageShell from '@/components/PageShell'; import {isLang} from '@/lib/i18n';
+export default async function Page({params}:{params:Promise<{lang:string}>}){const {lang:raw}=await params;if(!isLang(raw))return null;const lang=raw;return <PageShell lang={lang}><main><section className="page-hero"><div className="container narrow"><span className="eyebrow">CONTACT</span><h1>Contact New Ankle Dubai</h1><p className="lead">Request information, submit a case for review or plan an international consultation.</p></div></section><section className="section"><div className="container contact-grid"><div className="contact-card"><h3>Dubai, UAE</h3><p>Clinic address and opening date will be announced before launch.</p><p><b>Email</b><br/>info@newankledubai.com</p><p><b>International patients</b><br/>Use the consultation request form.</p></div><form className="form-card" action="mailto:info@newankledubai.com" method="post" encType="text/plain"><label>Name<input name="name" required/></label><label>Email<input type="email" name="email" required/></label><label>Phone<input name="phone"/></label><label>Reason for consultation<select name="reason"><option>Foot or ankle pain</option><option>Total ankle replacement</option><option>Diabetic foot / limb salvage</option><option>Trauma or reconstruction</option><option>International patient inquiry</option></select></label><label>Message<textarea name="message" rows={5}/></label><button className="btn" type="submit">Send Request</button></form></div></section></main></PageShell>}

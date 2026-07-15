@@ -1,2 +1,0 @@
-export const dynamic = "force-static";
-export default function sitemap(){const langs=["en","ru","ar"];const pages=["","about","medical-director","centers","conditions","international-patients","insights","faq","contact","privacy","terms","cookies","medical-disclaimer"];return langs.flatMap(lang=>pages.map(page=>({url:`https://newankledubai.com/${lang}/${page}${page?"/":""}`,lastModified:new Date()})));}

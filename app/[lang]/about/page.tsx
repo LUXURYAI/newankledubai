@@ -1,12 +1,2 @@
-import { Reveal } from "@/components/Reveal";
-import { getLang } from "@/lib/i18n";
-
-const data: [string, string, [string, string][]] = ["About New Ankle Dubai", "A Center of Excellence for Complex Foot & Ankle Care", [["Our Mission", "Preserving mobility, protecting limbs, and restoring quality of life through advanced specialist care."], ["Our Model", "International surgical expertise, careful clinical judgment, multidisciplinary coordination, and premium private-care experience."], ["Who We Serve", "Patients with diabetic foot complications, non-healing wounds, infection, ischemia, deformity, trauma, failed surgery, or complex reconstruction needs."]]];
-
-export default async function Page({params}:{params:Promise<{lang:string}>}){
- const {lang:raw}=await params; getLang(raw);
- return <>
-  <section className="pageHero"><Reveal><p className="eyebrow">{data[0]}</p><h1>{data[1]}</h1></Reveal></section>
-  <section className="section"><div className="cards">{data[2].map(([h,p]:[string,string])=><Reveal className="card" key={h}><h3>{h}</h3><p>{p}</p></Reveal>)}</div></section>
- </>;
-}
+import PageShell from '@/components/PageShell'; import CTA from '@/components/CTA'; import {isLang} from '@/lib/i18n';
+export default async function Page({params}:{params:Promise<{lang:string}>}){const {lang:raw}=await params;if(!isLang(raw))return null;const lang=raw;return <PageShell lang={lang}><main><section className="page-hero"><div className="container narrow"><span className="eyebrow">ABOUT NEW ANKLE DUBAI</span><h1>A Specialized Destination for Foot, Ankle & Limb Preservation Care</h1><p className="lead">Built around focused expertise, coordinated treatment and an international patient experience in Dubai.</p></div></section><section className="section"><div className="container two-col"><div><h2>One center. One clinical focus.</h2></div><div className="prose"><p>New Ankle Dubai is being developed as a specialist center for advanced foot and ankle care, including complex reconstruction, total ankle replacement, diabetic foot disease, trauma, sports injuries and limb salvage.</p><p>The model brings together assessment, treatment planning, surgery, recovery and follow-up around the patient’s complete journey.</p></div></div></section><section className="section soft"><div className="container feature-grid"><article><b>01</b><h3>Focused Expertise</h3><p>A center designed specifically around the foot, ankle and lower extremity.</p></article><article><b>02</b><h3>Multidisciplinary Thinking</h3><p>Coordination across surgery, wound care, vascular assessment, rehabilitation and diagnostics.</p></article><article><b>03</b><h3>International Access</h3><p>Remote review and coordinated care for patients traveling to Dubai.</p></article><article><b>04</b><h3>Patient-Centered Planning</h3><p>Treatment aligned with function, lifestyle and long-term goals.</p></article></div></section><CTA lang={lang}/></main></PageShell>}

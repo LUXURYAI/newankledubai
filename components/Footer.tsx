@@ -1,13 +1,4 @@
 import Link from "next/link";
-import type { Lang } from "@/lib/content";
-import { getContent } from "@/lib/i18n";
-
-export default function Footer({lang}:{lang:Lang}){
-  const t=getContent(lang);
-  return <footer className="footer">
-    <div><div className="brandMark">NAD</div><p>{t.footer}</p></div>
-    <div><strong>Quick Links</strong><Link href={`/${lang}/about/`}>{t.nav.about}</Link><Link href={`/${lang}/medical-director/`}>{t.nav.director}</Link><Link href={`/${lang}/contact/`}>{t.nav.contact}</Link></div>
-    <div><strong>Legal</strong><Link href={`/${lang}/privacy/`}>Privacy</Link><Link href={`/${lang}/terms/`}>Terms</Link><Link href={`/${lang}/cookies/`}>Cookies</Link><Link href={`/${lang}/medical-disclaimer/`}>Medical Disclaimer</Link></div>
-    <div className="footerBottom">© 2026 New Ankle Dubai · newankledubai.com</div>
-  </footer>
-}
+import type { Lang } from "@/lib/i18n";
+import { nav, t, copy } from "@/lib/site-data";
+export default function Footer({lang}:{lang:Lang}){return <footer><div className="container footer-grid"><div><div className="brand footer-brand"><span className="brand-box">NAD</span><span><b>New Ankle Dubai</b><small>Foot & Ankle Center of Excellence</small></span></div><p>{copy[lang].disclaimer}</p></div><div><h4>{lang==='ru'?'Разделы':lang==='ar'?'الأقسام':'Explore'}</h4>{nav.slice(0,6).map(n=><Link key={n.href} href={`/${lang}/${n.href}/`}>{t(n.label,lang)}</Link>)}</div><div><h4>{lang==='ru'?'Связаться':lang==='ar'?'تواصل معنا':'Contact'}</h4><Link href={`/${lang}/book/`}>{copy[lang].book}</Link><Link href={`/${lang}/international-patients/`}>International Patients</Link><span>Dubai, United Arab Emirates</span></div></div><div className="container footer-bottom">© 2026 New Ankle Dubai. All rights reserved.</div></footer>}

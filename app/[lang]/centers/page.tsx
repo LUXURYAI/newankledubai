@@ -1,12 +1,2 @@
-import { Reveal } from "@/components/Reveal";
-import { getLang } from "@/lib/i18n";
-
-const data: [string, string, [string, string][]] = ["Centers of Excellence", "Focused Expertise. Coordinated Care.", [["Diabetic Foot Center", "Ulcer, infection, tissue loss, debridement, wound planning, and urgent diabetic foot assessment."], ["Limb Salvage Center", "Ischemia, vascular pathways, multidisciplinary review, and preservation-focused decision-making."], ["Reconstruction Center", "Reconstruction after trauma, infection, deformity, partial amputation, or failed surgery."], ["Second Opinion", "Specialist review before major reconstruction, revision, or proposed amputation."], ["International Patients", "Remote record review, travel coordination, treatment planning, and follow-up."]]];
-
-export default async function Page({params}:{params:Promise<{lang:string}>}){
- const {lang:raw}=await params; getLang(raw);
- return <>
-  <section className="pageHero"><Reveal><p className="eyebrow">{data[0]}</p><h1>{data[1]}</h1></Reveal></section>
-  <section className="section"><div className="cards">{data[2].map(([h,p]:[string,string])=><Reveal className="card" key={h}><h3>{h}</h3><p>{p}</p></Reveal>)}</div></section>
- </>;
-}
+import PageShell from '@/components/PageShell'; import CTA from '@/components/CTA'; import {isLang} from '@/lib/i18n'; import {centers,t} from '@/lib/site-data';
+export default async function Page({params}:{params:Promise<{lang:string}>}){const {lang:raw}=await params;if(!isLang(raw))return null;const lang=raw;return <PageShell lang={lang}><main><section className="page-hero"><div className="container narrow"><span className="eyebrow">CENTERS OF EXCELLENCE</span><h1>{lang==='ru'?'Шесть направлений. Одна специализированная экосистема.':lang==='ar'?'ستة مراكز. منظومة تخصصية واحدة.':'Six Centers. One Specialized Ecosystem.'}</h1><p className="lead">Focused programs for patients who need deeper expertise, coordinated decision-making and advanced treatment options.</p></div></section><section className="section"><div className="container center-list">{centers.map((x,i)=><article id={x.slug} key={x.slug}><div className="center-number">0{i+1}</div><div><span className="service-icon">{x.icon}</span><h2>{t(x.title,lang)}</h2><p>{t(x.text,lang)}</p><ul><li>Specialist case review</li><li>Advanced imaging and treatment planning</li><li>Non-surgical and surgical options</li><li>Structured recovery and follow-up</li></ul></div></article>)}</div></section><CTA lang={lang}/></main></PageShell>}
